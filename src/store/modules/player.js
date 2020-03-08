@@ -3,9 +3,18 @@ export const getters = {
   getPosition: 'getPosition',
 };
 
+export const mutations = {
+  movePlayer: 'movePlayer',
+};
+
 export const vuexModule = {
   actions: {},
   mutations: {
+    [mutations.movePlayer]:
+      (state, {dx, dy}) => {
+        state.position.x += dx;
+        state.position.y += dy;
+      },
   },
   state: {
     position: {

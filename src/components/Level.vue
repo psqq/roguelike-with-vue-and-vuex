@@ -10,12 +10,35 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import * as level from "../store/modules/level";
-// import * as player from "../store/modules/player";
+import * as player from "../store/modules/player";
 
 export default {
   name: "Level",
+  created() {
+    window.addEventListener("keydown", this.handleKeyboardEvent);
+  },
+  destroyed() {
+    window.removeEventListener("keydown", this.handleKeyboardEvent);
+  },
+  methods: {
+    ...mapMutations([player.mutations.movePlayer]),
+    handleKeyboardEvent(e) {
+      if (["Numpad6", "KeyD"].includes(e.code)) {
+        this.movePlayer({ dx: 1, dy: 0 });
+      }
+      if (["Numpad4", "KeyA"].includes(e.code)) {
+        this.movePlayer({ dx: -1, dy: 0 });
+      }
+      if (["Numpad8", "KeyW"].includes(e.code)) {
+        this.movePlayer({ dx: 0, dy: -1 });
+      }
+      if (["Numpad2", "KeyS"].includes(e.code)) {
+        this.movePlayer({ dx: 0, dy: 1 });
+      }
+    }
+  },
   computed: {
     ...mapGetters([level.getters.getCurrentLevel]),
     playerPosition() {
