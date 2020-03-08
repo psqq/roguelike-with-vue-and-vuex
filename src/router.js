@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: MainMenu },
+  { path: '/index.html', component: MainMenu },
   { path: '/about', component: About },
   { path: '/game', component: Game },
 ];
