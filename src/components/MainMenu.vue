@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="mainmenu">
     <h1>Main menu</h1>
-    <button @click="startNewGame">Start new game</button>
+    <span @click="startNewGame" class="btn">Start new game</span>
     <br />
     <br />
-    <button>High scores</button>
+    <span>High scores</span>
   </div>
 </template>
 
@@ -25,4 +25,9 @@ export default {
 </script>
 
 <style scoped>
+.mainmenu {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
 </style>
