@@ -1,20 +1,11 @@
 
-export const getters = {
-  getPosition: 'getPosition',
-};
-
-export const mutations = {
-  movePlayer: 'movePlayer',
-};
-
-export const vuexModule = {
+export default {
   actions: {},
   mutations: {
-    [mutations.movePlayer]:
-      (state, {dx, dy}) => {
-        state.position.x += dx;
-        state.position.y += dy;
-      },
+    movePlayer(state, { dx, dy }) {
+      state.position.x += dx;
+      state.position.y += dy;
+    },
   },
   state: {
     position: {
@@ -23,9 +14,8 @@ export const vuexModule = {
     },
   },
   getters: {
-    [getters.getPosition]:
-      (state) => {
-        return state.position;
-      },
+    getPlayerPosition(state) {
+      return state.position;
+    },
   }
 };

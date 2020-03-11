@@ -4,7 +4,7 @@ import createPersistedState from "vuex-persistedstate";
 import * as items from './modules/items';
 import game from './modules/game';
 import * as level from './modules/level';
-import * as player from './modules/player';
+import player from './modules/player';
 
 Vue.use(Vuex);
 
@@ -13,7 +13,7 @@ export default new Vuex.Store({
     items: items.vuexModule,
     game,
     level: level.vuexModule,
-    player: player.vuexModule,
+    player,
   },
   plugins: [createPersistedState()]
 });

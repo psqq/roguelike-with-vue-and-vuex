@@ -12,7 +12,6 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import * as level from "../store/modules/level";
-import * as player from "../store/modules/player";
 
 export default {
   name: "Level",
@@ -23,7 +22,7 @@ export default {
     window.removeEventListener("keydown", this.handleKeyboardEvent);
   },
   methods: {
-    ...mapMutations([player.mutations.movePlayer]),
+    ...mapMutations(["movePlayer"]),
     handleKeyboardEvent(e) {
       if (["Numpad6", "KeyD"].includes(e.code)) {
         this.movePlayer({ dx: 1, dy: 0 });
