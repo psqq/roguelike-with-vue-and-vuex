@@ -1,19 +1,10 @@
 
-export const getters = {
-  isGameStarted: 'isGameStarted',
-};
-
-export const mutations = {
-  startGame: 'startGame',
-};
-
-export const vuexModule = {
+export default {
   actions: {},
   mutations: {
-    [mutations.startGame]:
-      (state) => {
-        state.gameStarted = true;
-      },
+    startGame(state) {
+      state.gameStarted = true;
+    },
     endGame(state) {
       state.gameStarted = false;
     },
@@ -22,9 +13,8 @@ export const vuexModule = {
     gameStarted: false,
   },
   getters: {
-    [getters.isGameStarted]:
-      (state) => {
-        return state.gameStarted;
-      },
+    isGameStarted(state) {
+      return state.gameStarted;
+    },
   }
 };

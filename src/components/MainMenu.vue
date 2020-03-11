@@ -6,12 +6,11 @@
 
 <script>
 import { mapMutations } from "vuex";
-import * as game from "../store/modules/game";
 
 export default {
   name: "MainMenu",
   methods: {
-    ...mapMutations([game.mutations.startGame]),
+    ...mapMutations(["startGame"]),
     startNewGame() {
       this.startGame();
       this.$router.push("/game");
