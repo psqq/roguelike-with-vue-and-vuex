@@ -14,20 +14,10 @@ function createArenaLevel(w, h) {
   return level;
 }
 
-export const getters = {
-  getCurrentLevel: 'getCurrentLevel',
-};
-
-export const mutations = {
-  createLevel: 'createLevel',
-};
-
-export const vuexModule = {
+export default {
   actions: {},
   mutations: {
-    [mutations.createLevel]:
-      () => {
-      },
+    createLevel() { },
   },
   state: {
     currentLevel: 0,
@@ -36,9 +26,8 @@ export const vuexModule = {
     ],
   },
   getters: {
-    [getters.getCurrentLevel]:
-      (state) => {
-        return state.levels[state.currentLevel];
-      },
+    getCurrentLevel(state) {
+      return state.levels[state.currentLevel];
+    },
   }
 };

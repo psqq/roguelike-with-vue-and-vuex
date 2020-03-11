@@ -11,7 +11,6 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import * as level from "../store/modules/level";
 
 export default {
   name: "Level",
@@ -39,7 +38,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([level.getters.getCurrentLevel]),
+    ...mapGetters(["getCurrentLevel"]),
     playerPosition() {
       return this.$store.state.player.position;
     }

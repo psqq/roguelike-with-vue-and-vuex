@@ -1,18 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from "vuex-persistedstate";
-import * as items from './modules/items';
+import items from './modules/items';
 import game from './modules/game';
-import * as level from './modules/level';
+import level from './modules/level';
 import player from './modules/player';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    items: items.vuexModule,
+    items,
     game,
-    level: level.vuexModule,
+    level,
     player,
   },
   plugins: [createPersistedState()]
