@@ -1,4 +1,13 @@
 
+function initialState() {
+  return {
+    position: {
+      x: 3,
+      y: 3,
+    },
+  }
+}
+
 export default {
   actions: {},
   mutations: {
@@ -6,13 +15,14 @@ export default {
       state.position.x += dx;
       state.position.y += dy;
     },
+    resetPlayer(state) {
+      const s = initialState()
+      Object.keys(s).forEach(key => {
+        state[key] = s[key]
+      })
+    }
   },
-  state: {
-    position: {
-      x: 3,
-      y: 3,
-    },
-  },
+  state: initialState,
   getters: {
     getPlayerPosition(state) {
       return state.position;

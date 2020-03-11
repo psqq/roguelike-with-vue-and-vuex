@@ -13,6 +13,7 @@ export default {
     ...mapMutations(["startGame"]),
     startNewGame() {
       this.startGame();
+      this.$store.commit("resetAll");
       this.$router.push("/game");
     }
   }
