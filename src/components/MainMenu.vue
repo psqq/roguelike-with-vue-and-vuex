@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <h1>Main menu</h1>
-    <button @click="startNewGame">Start new game</button>
-    <br />
-    <br />
-    <button>High scores</button>
+  <div class="wrapper">
+    <div class="menu" @click="startNewGame">Начать новую игру</div>
   </div>
 </template>
 
@@ -25,4 +21,21 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    ". a a ."
+    ". a a .";
+}
+.menu {
+  grid-area: a;
+  align-self: center;
+  justify-self: center;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 10px;
+}
 </style>
