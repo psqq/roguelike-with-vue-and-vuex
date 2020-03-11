@@ -14,6 +14,9 @@ export const vuexModule = {
       (state) => {
         state.gameStarted = true;
       },
+    endGame(state) {
+      state.gameStarted = false;
+    },
   },
   state: {
     gameStarted: false,
