@@ -1,19 +1,26 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from "vuex-persistedstate";
-import * as items from './modules/items';
-import * as game from './modules/game';
-import * as level from './modules/level';
-import * as player from './modules/player';
+import items from './modules/items';
+import game from './modules/game';
+import level from './modules/level';
+import player from './modules/player';
+import enemies from './modules/enemies';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  mutations: {
+    resetAll() {
+      this.commit("resetPlayer");
+    }
+  },
   modules: {
-    items: items.vuexModule,
-    game: game.vuexModule,
-    level: level.vuexModule,
-    player: player.vuexModule,
+    items,
+    game,
+    level,
+    player,
+    enemies,
   },
   plugins: [createPersistedState()]
 });

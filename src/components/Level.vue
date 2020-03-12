@@ -1,18 +1,13 @@
 <template>
   <div>
     <div class="level" v-for="(row, rowIndex) in getCurrentLevel" :key="rowIndex">
-      <span v-for="(cell, colIndex) in row" :key="colIndex">
-        <template v-if="playerPosition.y == rowIndex && playerPosition.x == colIndex">@</template>
-        <template v-else>{{ cell }}</template>
-      </span>
+      <span v-for="(cell, colIndex) in row" :key="colIndex">{{ getCellSymbol(colIndex, rowIndex) }}</span>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import * as level from "../store/modules/level";
-import * as player from "../store/modules/player";
 
 export default {
   name: "Level",
@@ -23,7 +18,7 @@ export default {
     window.removeEventListener("keydown", this.handleKeyboardEvent);
   },
   methods: {
-    ...mapMutations([player.mutations.movePlayer]),
+    ...mapMutations(["movePlayer"]),
     handleKeyboardEvent(e) {
       if (["Numpad6", "KeyD"].includes(e.code)) {
         this.movePlayer({ dx: 1, dy: 0 });
@@ -37,10 +32,19 @@ export default {
       if (["Numpad2", "KeyS"].includes(e.code)) {
         this.movePlayer({ dx: 0, dy: 1 });
       }
+    },
+    getCellSymbol(x, y) {
+      if (this.playerPosition.x == x && this.playerPosition.y == y) {
+        return "@";
+      } else if (this.isEnemyInPosition(x, y)) {
+        return "e";
+      }
+      return ".";
     }
   },
   computed: {
-    ...mapGetters([level.getters.getCurrentLevel]),
+    ...mapGetters(["getCurrentLevel"]),
+    ...mapGetters(["isEnemyInPosition"]),
     playerPosition() {
       return this.$store.state.player.position;
     }

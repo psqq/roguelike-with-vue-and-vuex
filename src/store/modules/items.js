@@ -1,6 +1,6 @@
 import shortid from 'shortid';
 
-export const items = {
+const items = {
   dagger: {
     id: shortid,
     name: 'dagger',
@@ -15,9 +15,9 @@ export const items = {
   },
 };
 
-export const vuexModule = {
-  actions: { },
-  mutations: { },
+export default {
+  actions: {},
+  mutations: {},
   state: {
     items: Object.values(items),
   },
